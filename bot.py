@@ -1,4 +1,4 @@
-from secrets import *
+from app_data import *
 import tweepy
 import speedtest
 
@@ -11,8 +11,8 @@ def format_speed(speed):
     return '%0.2f %s' % (speed, units[unit])
 
 if __name__ == '__main__':
-    auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
-    auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)
+    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+    auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
     api = tweepy.API(auth)
 
     servers = []
