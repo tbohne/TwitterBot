@@ -2,6 +2,7 @@ from app_data import *
 import tweepy
 from imdb import IMDb
 from random import randint
+import time
 
 if __name__ == '__main__':
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -19,10 +20,13 @@ if __name__ == '__main__':
     imdb.update(movie, 'trivia')
 
     while True:
-        trivia_idx = randint(0, len(movie['trivia']) - 1)
-        fact = movie['trivia'][trivia_idx]
-        # tweets are only allowed to include <= 140 chars
-        if len(fact) <= 140:
-            break
-
-    api.update_status(msg + fact)
+        while True:
+            trivia_idx = randint(0, len(movie['trivia']) - 1)
+            fact = movie['trivia'][trivia_idx]
+            # tweets are only allowed to include <= 140 chars
+            if len(fact) <= 140:
+                break
+        api.update_status(msg + fact)
+        # post a tweet every 10 minutes
+        print("sleeping for 10 minutes now..")
+        time.sleep(600)
