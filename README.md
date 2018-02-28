@@ -1,2 +1,2 @@
-# TwitterBot
-Experimental twitter bot.
+# TwitterBots
+Experimental twitter bots.
